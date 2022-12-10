@@ -25,6 +25,7 @@ export const SearchBar: React.FC<ISearchBarProps> = ({
         placeholder="Try 'BTC' or 'bitcoin'"
         numberOfLines={1}
         onChangeText={debounceListener}
+        cursorColor={colors.blue1}
       />
       <View style={{justifyContent: 'center'}}>
         <Magnifier size={32} color={colors.blue1} />
