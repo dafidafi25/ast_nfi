@@ -42,7 +42,7 @@ export const Home: React.FC<IHomeProps> = () => {
 };
 
 const styles = StyleSheet.create({
-  container: {flex: 1},
+  container: {flex: 1, backgroundColor: 'white'},
 });
 
 export default Home;
