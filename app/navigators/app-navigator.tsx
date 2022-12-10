@@ -1,16 +1,13 @@
 import React, {Fragment} from 'react';
-import {useColorScheme, View} from 'react-native';
-import {
-  NavigationContainer,
-  DefaultTheme,
-  DarkTheme,
-} from '@react-navigation/native';
+import {NavigationContainer, DefaultTheme} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {navigationRef, useBackButtonHandler} from './navigation-utilities';
+import Home from '@screens/Home/Home';
+import AddScreen from '@screens/AddScreen/AddScreen';
 
 export type NavigatorParamList = {
   home: undefined;
-  // 🔥 Your screens go here
+  addScreen: undefined;
 };
 // Documentation: https://reactnavigation.org/docs/stack-navigator/
 const Stack = createNativeStackNavigator<NavigatorParamList>();
@@ -18,7 +15,8 @@ const Stack = createNativeStackNavigator<NavigatorParamList>();
 const AppStack = () => {
   const Route = (
     <Fragment>
-      <Stack.Screen name="home" component={DummyScreen} />
+      <Stack.Screen name="home" component={Home} />
+      <Stack.Screen name="addScreen" component={AddScreen} />
     </Fragment>
   );
 
@@ -42,14 +40,15 @@ interface NavigationProps
   extends Partial<React.ComponentProps<typeof NavigationContainer>> {}
 
 export const AppNavigator = (props: NavigationProps) => {
-  const colorScheme = useColorScheme();
   useBackButtonHandler(canExit);
+
+  console.log(props);
 
   return (
     <NavigationContainer
       ref={navigationRef}
-      theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}
-      {...props} // To Persist Navigation
+      theme={DefaultTheme}
+      // {...props} // To Persist Navigation
     >
       <AppStack />
     </NavigationContainer>
@@ -69,5 +68,3 @@ AppNavigator.displayName = 'AppNavigator';
  */
 const exitRoutes = ['home'];
 export const canExit = (routeName: string) => exitRoutes.includes(routeName);
-
-const DummyScreen = () => <View />;

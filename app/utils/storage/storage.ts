@@ -37,8 +37,7 @@ export async function saveString(key: string, value: string): Promise<boolean> {
 export async function load(key: string): Promise<any | null> {
   try {
     const almostThere = await AsyncStorage.getItem(key);
-    if (almostThere) return JSON.parse(almostThere);
-    else return {};
+    return JSON.parse(almostThere);
   } catch {
     return null;
   }

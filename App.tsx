@@ -11,7 +11,7 @@ function App() {
     onNavigationStateChange,
     isRestored: isNavigationStateRestored,
   } = useNavigationPersistence(storage, NAVIGATION_PERSISTENCE_KEY);
-
+  console.log(initialNavigationState);
   if (!isNavigationStateRestored) return null;
 
   return (
