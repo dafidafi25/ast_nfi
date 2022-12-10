@@ -21,29 +21,26 @@ export const ASTAutocomplete: React.FC<IASTAutocompleteProps> = ({
   onChange,
 }) => {
   const [uiFocus, setUiFocus] = React.useState<boolean>(false);
-  const [uiValue, setUiValue] = React.useState<string>('');
+  const [uiSelectedValue, setUiSelectedValue] = React.useState<string>('');
 
   return (
     <AutocompleteDropdown
-      onClear={() => setUiValue('')}
+      onClear={() => setUiSelectedValue('')}
       showChevron={false}
-      showClear={uiFocus || uiValue !== ''}
+      showClear={uiFocus || uiSelectedValue !== ''}
       closeOnBlur={true}
       closeOnSubmit={false}
       initialValue={value?.toString()}
       onFocus={() => setUiFocus(true)}
       onSelectItem={selectedItem => {
-        console.log('selectedItem', selectedItem);
         onChange && onChange(Number(selectedItem.id));
-        selectedItem &&
-          setUiValue(selectedItem.title ? selectedItem.title : '');
+        selectedItem && setUiSelectedValue(selectedItem.id);
       }}
       onBlur={() => setUiFocus(false)}
       dataSet={item}
       textInputProps={{
         placeholder: placeholder,
         placeholderTextColor: colors.gray3,
-        value: uiValue,
         style: {fontSize: 16},
       }}
       ClearIconComponent={<CrossIcon />}
