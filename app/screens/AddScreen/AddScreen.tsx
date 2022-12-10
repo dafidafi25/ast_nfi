@@ -31,12 +31,16 @@ export const AddScreen: React.FC<IAddScreenProps> = () => {
     fetchData();
   }, []);
 
+  const onSearchQuery = (query: string) => {
+    console.log('Retrieve new data', query);
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <NavigationAppBar title="Add Crypto" />
 
       <View style={{paddingHorizontal: 16, backgroundColor: colors.blue1}}>
-        <SearchBar />
+        <SearchBar onChangeText={onSearchQuery} debounce={1000} />
         <Spacer height={16} />
       </View>
       <Spacer height={32} />
