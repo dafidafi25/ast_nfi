@@ -2,9 +2,41 @@
 {
   "extends": "@tsconfig/react-native/tsconfig.json",     /* Recommended React Native TSConfig base */
   "compilerOptions": {
-    /* Visit https://aka.ms/tsconfig.json to read more about this file */
+    "allowJs": false,
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "jsx": "react-native",
+    "module": "es2015",
+    "moduleResolution": "node",
+    "noImplicitAny": false,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "sourceMap": true,
+    "target": "esnext",
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": ["app/components/*"],
+      "@screens/*": ["app/screens/*"],
+      "@styles/*": ["app/styles/*"],
+      "@services/*": ["app/services/*"],
+      "@theme/*": ["app/theme/*"],
+      "@routers/*": ["app/routers/*"],
+      "@redux/*": ["app/redux/*"],
+      "@assets/*": ["app/assets/*"],
+      "@helper/*": ["app/helper/*"],
+      "@images": ["app/assets/images"],
+      "@utils/*": ["app/utils/*"],
+      "@navigators/*": ["app/navigators/*"],
+      "@models/*": ["app/models/*"],
+      "@story/*": ["storybook/*"],
+      "@store/*": ["app/store/*"],
+      "@hooks/*": ["app/hooks/*"]
+    },
 
-    /* Completeness */
-    "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
-  }
+    "lib": ["esnext", "dom"],
+    "skipLibCheck": true,
+    "resolveJsonModule": true
+  },
+   "exclude": ["node_modules", "babel.config.js", "metro.config.js", "jest.config.js"]
 }
