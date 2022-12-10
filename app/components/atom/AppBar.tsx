@@ -9,7 +9,7 @@ interface IAppBarProps {
 export const AppBar: React.FC<IAppBarProps> = ({title}) => {
   return (
     <View style={styles.container}>
-      <ASTText color="white" type="header">
+      <ASTText color="white" type="header" fontSize={28}>
         {title}
       </ASTText>
     </View>
