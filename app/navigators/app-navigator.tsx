@@ -4,6 +4,8 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {navigationRef, useBackButtonHandler} from './navigation-utilities';
 import Home from '@screens/Home/Home';
 import AddScreen from '@screens/AddScreen/AddScreen';
+import {StatusBar} from 'react-native';
+import {colors} from '@theme/colors';
 
 export type NavigatorParamList = {
   home: undefined;
@@ -28,7 +30,7 @@ const AppStack = () => {
     <Stack.Navigator
       screenOptions={{
         headerShown: false,
-        animation: 'simple_push',
+        animation: 'slide_from_right',
       }}
       initialRouteName="home">
       {getCurrentRoutes()}
@@ -48,8 +50,10 @@ export const AppNavigator = (props: NavigationProps) => {
     <NavigationContainer
       ref={navigationRef}
       theme={DefaultTheme}
+
       // {...props} // To Persist Navigation
     >
+      <StatusBar backgroundColor={colors.blue1} />
       <AppStack />
     </NavigationContainer>
   );

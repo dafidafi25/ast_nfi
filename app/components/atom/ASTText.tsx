@@ -7,6 +7,7 @@ interface IASTTextProps {
   color?: string;
   children?: React.ReactNode;
   fontSize?: number;
+  style?: TextStyle;
 }
 
 export const ASTText: React.FC<IASTTextProps> = ({
@@ -14,6 +15,7 @@ export const ASTText: React.FC<IASTTextProps> = ({
   color = colors.black,
   children,
   fontSize,
+  style,
 }) => {
   let presetStyle: TextStyle = {};
 
@@ -23,7 +25,7 @@ export const ASTText: React.FC<IASTTextProps> = ({
 
   if (fontSize) presetStyle = {...presetStyle, fontSize: fontSize};
 
-  return <Text style={presetStyle}>{children}</Text>;
+  return <Text style={{...presetStyle, ...style}}>{children}</Text>;
 };
 
 const styles = StyleSheet.create({

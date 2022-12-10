@@ -1,11 +1,12 @@
 import {AppBar, Spacer} from '@components/atom';
-import ASTText from '@components/atom/ASTText';
+import ASTButton from '@components/atom/ASTButton';
 import {StockCard} from '@components/molecule';
 import {NavigatorParamList} from '@navigators/app-navigator';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {colors} from '@theme/colors';
 import React from 'react';
-import {StyleSheet, TouchableOpacity, View} from 'react-native';
+import {ScrollView, StyleSheet, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 
 type NavigatinoParams = NativeStackNavigationProp<NavigatorParamList, 'home'>;
@@ -18,25 +19,32 @@ export const Home: React.FC<IHomeProps> = () => {
   return (
     <SafeAreaView style={styles.container}>
       <AppBar title="CryptoTrackerPro" />
-      <Spacer height={32} />
-      <View style={{paddingHorizontal: 16}}>
-        <StockCard />
+      <ScrollView style={{flex: 1}}>
+        <Spacer height={32} />
+        <View style={{paddingHorizontal: 16}}>
+          <StockCard />
+        </View>
+        <Spacer height={32} />
+        <View style={{paddingHorizontal: 16}}>
+          <StockCard />
+        </View>
+        <Spacer height={32} />
+        <View style={{paddingHorizontal: 16}}>
+          <StockCard />
+        </View>
+        <Spacer height={48} />
+      </ScrollView>
+      <View style={{paddingHorizontal: 16, backgroundColor: colors.blue1}}>
+        <Spacer height={16} />
+        <View style={{alignSelf: 'center', width: '100%'}}>
+          <ASTButton
+            onPress={() => navigation.navigate('addScreen')}
+            title="Add Crypto"
+            textColor={colors.black}
+          />
+        </View>
+        <Spacer height={16} />
       </View>
-      <Spacer height={32} />
-      <View style={{paddingHorizontal: 16}}>
-        <StockCard />
-      </View>
-      <Spacer height={32} />
-      <View style={{paddingHorizontal: 16}}>
-        <StockCard />
-      </View>
-      <Spacer height={48} />
-
-      <TouchableOpacity
-        style={{alignSelf: 'center'}}
-        onPress={() => navigation.navigate('addScreen')}>
-        <ASTText> + Add a Cryptocurrency</ASTText>
-      </TouchableOpacity>
     </SafeAreaView>
   );
 };

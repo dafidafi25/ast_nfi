@@ -6,20 +6,29 @@ import ASTText from './ASTText';
 interface IASTButtonProps {
   title: string;
   onPress?: () => void;
+  textColor?: string;
 }
 
-export const ASTButton: React.FC<IASTButtonProps> = ({title, onPress}) => {
+export const ASTButton: React.FC<IASTButtonProps> = ({
+  title,
+  onPress,
+  textColor,
+}) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity
         onPress={() => onPress && onPress()}
         style={{
-          paddingVertical: 12,
+          paddingVertical: 8,
           backgroundColor: colors.orange,
           borderRadius: 6,
-          paddingHorizontal: 54,
+          paddingHorizontal: 32,
         }}>
-        <ASTText type="button">{title}</ASTText>
+        <View style={{alignSelf: 'center'}}>
+          <ASTText type="button" style={{color: textColor}}>
+            {title}
+          </ASTText>
+        </View>
       </TouchableOpacity>
     </View>
   );

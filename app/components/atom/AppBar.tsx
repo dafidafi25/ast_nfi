@@ -1,3 +1,4 @@
+import {colors} from '@theme/colors';
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import ASTText from './ASTText';
@@ -18,11 +19,11 @@ export const AppBar: React.FC<IAppBarProps> = ({title}) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#385775',
+    backgroundColor: colors.blue1,
     paddingHorizontal: 16,
     flexDirection: 'row',
-    paddingTop: 32,
-    paddingBottom: 40,
+    paddingTop: 15,
+    paddingBottom: 20,
   },
 });
 
