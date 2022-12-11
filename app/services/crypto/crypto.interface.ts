@@ -10,3 +10,11 @@ export interface IGetListCoinResponse {
   data: ICryptoModel[];
   timestamp: string;
 }
+
+export interface IGetCoinByIdRequest {
+  id: string;
+}
+export interface IGetCoinByIdResponse {
+  data: ICryptoModel;
+  timestamp: string;
+}

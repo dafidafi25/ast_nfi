@@ -2,6 +2,8 @@ import '@utils/ignore-warning';
 import React from 'react';
 import * as storage from '@utils/storage/index';
 import {AppNavigator, useNavigationPersistence} from '@navigators/index';
+import {Provider} from 'react-redux';
+import {store} from '@store/store';
 
 export const NAVIGATION_PERSISTENCE_KEY = 'NAVIGATION_STATE';
 
@@ -15,12 +17,12 @@ function App() {
   if (!isNavigationStateRestored) return null;
 
   return (
-    <>
+    <Provider store={store}>
       <AppNavigator
         initialState={initialNavigationState}
         onStateChange={onNavigationStateChange}
       />
-    </>
+    </Provider>
   );
 }
 

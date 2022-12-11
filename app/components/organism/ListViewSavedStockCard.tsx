@@ -2,28 +2,16 @@ import {Spacer} from '@components/atom';
 import SelectStockCardContainer from '@components/container/SelectStockCardContainer';
 import {useAppSelector} from '@hooks/useAppSelector';
 import {FlashList, ListRenderItem} from '@shopify/flash-list';
-import {GetCoinList} from '@store/index';
-import React, {useEffect} from 'react';
+import React from 'react';
 import {Dimensions, View} from 'react-native';
-import {useDispatch} from 'react-redux';
 
 // get screen width
 const screenWidth = Dimensions.get('screen').width;
 
-interface IListViewSelectStockCardProps {}
+interface IListVIewSavedStockProps {}
 
-export const ListViewSelectStockCard: React.FC<
-  IListViewSelectStockCardProps
-> = () => {
-  const dispatch = useDispatch();
-  const CryptoState = useAppSelector(state => state.crypto.allIds);
-  const offset = useAppSelector(state => state.crypto.offset);
-  const search = useAppSelector(state => state.crypto.search);
-
-  useEffect(() => {
-    dispatch(GetCoinList({limit: 10, offset: 0, search: ''}));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+export const ListVIewSavedStock: React.FC<IListVIewSavedStockProps> = () => {
+  const CryptoState = useAppSelector(state => state.crypto.savedIds);
 
   const keyExt = (item: string) => item;
 
@@ -46,18 +34,9 @@ export const ListViewSelectStockCard: React.FC<
         renderItem={renderItem}
         ItemSeparatorComponent={itemSeparator}
         ListFooterComponent={<Spacer height={85} />}
-        onEndReached={() => {
-          dispatch(
-            GetCoinList({
-              limit: 10,
-              offset: offset + 10,
-              search: search,
-            }),
-          );
-        }}
       />
     </View>
   );
 };
 
-export default ListViewSelectStockCard;
+export default ListVIewSavedStock;
